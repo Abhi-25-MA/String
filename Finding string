@@ -1,0 +1,35 @@
+n = int(input("Enter no of strings:"))
+prev_proc_str = None
+
+for i in range(n):
+    s = input(f"Enter string {i+1}:")
+    rev_case = ""
+    for char in s:
+        if char.islower():
+            rev_case += char.upper()  
+        elif char.isupper():
+            rev_case += char.lower()
+        else:
+            rev_case += char
+    print(f"a) Rev case: {rev_case}")
+
+  
+    vowels = "aeiouAEIOU"
+    no_vowels = ""
+    for char in rev_case:
+        if char not in vowels:
+            no_vowels += char
+    print(f"b) Without vowels: {no_vowels}")
+
+    no_duplicates = ""
+    for char in no_vowels:
+        if char not in no_duplicates:
+            no_duplicates += char
+    print(f"c) Without duplicates: {no_duplicates}")
+
+  
+    if prev_proc_str is not None and no_duplicates == prev_proc_str:
+        print("d) Duplicate value")
+    prev_proc_str = no_duplicates
+    
+    print()  
